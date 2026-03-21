@@ -7,7 +7,7 @@ export default function Home() {
         <div className="min-h-screen bg-gradient-to-b from-cyan-50 to-white dark:from-cyan-950/20 dark:to-background flex flex-col items-center justify-center px-6">
             <div className="max-w-2xl text-center space-y-6">
                 <Image
-                    src="https://github.com/lun4by/Lunaby/blob/main/assets/avatar.png?raw=true"
+                    src="https://cdn.lunie.dev/Lunaby/avatar.png"
                     alt="Lunaby Logo"
                     width={64}
                     height={64}

@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     title: "Lunaby API Docs",
     description: "Official developer documentation for Lunaby API",
     icons: {
-        icon: "https://github.com/lun4by/Lunaby/blob/main/assets/avatar.png?raw=true",
+        icon: "https://cdn.lunie.dev/Lunaby/avatar.png",
     },
 };
 
