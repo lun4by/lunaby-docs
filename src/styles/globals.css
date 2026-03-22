@@ -1,0 +1,277 @@
+@import "tailwindcss";
+
+/* ========================================
+   Lunaby Docs - Design System
+   Multi-theme color support
+   ======================================== */
+
+@theme {
+  --color-background: #ffffff;
+  --color-foreground: #0a0a0a;
+  --color-muted: #f5f5f5;
+  --color-muted-foreground: #737373;
+  --color-border: #e5e5e5;
+  --color-card: #ffffff;
+  --color-card-foreground: #0a0a0a;
+  --color-primary: #0a0a0a;
+  --color-primary-foreground: #fafafa;
+  --color-accent: #f5f5f5;
+  --color-accent-foreground: #0a0a0a;
+  --color-destructive: #ef4444;
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-info: #3b82f6;
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+}
+
+/* ---- Dark mode (neutral) ---- */
+.dark {
+  --color-background: #09090b;
+  --color-foreground: #fafafa;
+  --color-muted: #18181b;
+  --color-muted-foreground: #a1a1aa;
+  --color-border: #27272a;
+  --color-card: #09090b;
+  --color-card-foreground: #fafafa;
+  --color-primary: #fafafa;
+  --color-primary-foreground: #09090b;
+  --color-accent: #27272a;
+  --color-accent-foreground: #fafafa;
+}
+
+/* ============ Theme Colors ============ */
+
+/* Blue */
+[data-theme-color="blue"] {
+  --color-primary: #2563eb;
+  --color-primary-foreground: #eff6ff;
+}
+.dark[data-theme-color="blue"],
+.dark [data-theme-color="blue"] {
+  --color-primary: #3b82f6;
+  --color-primary-foreground: #eff6ff;
+}
+
+/* Cyan */
+[data-theme-color="cyan"] {
+  --color-primary: #0891b2;
+  --color-primary-foreground: #ecfeff;
+}
+.dark[data-theme-color="cyan"],
+.dark [data-theme-color="cyan"] {
+  --color-primary: #22d3ee;
+  --color-primary-foreground: #042f2e;
+}
+
+/* Green */
+[data-theme-color="green"] {
+  --color-primary: #16a34a;
+  --color-primary-foreground: #f0fdf4;
+}
+.dark[data-theme-color="green"],
+.dark [data-theme-color="green"] {
+  --color-primary: #22c55e;
+  --color-primary-foreground: #052e16;
+}
+
+/* Orange */
+[data-theme-color="orange"] {
+  --color-primary: #ea580c;
+  --color-primary-foreground: #fff7ed;
+}
+.dark[data-theme-color="orange"],
+.dark [data-theme-color="orange"] {
+  --color-primary: #f97316;
+  --color-primary-foreground: #431407;
+}
+
+/* Red */
+[data-theme-color="red"] {
+  --color-primary: #dc2626;
+  --color-primary-foreground: #fef2f2;
+}
+.dark[data-theme-color="red"],
+.dark [data-theme-color="red"] {
+  --color-primary: #ef4444;
+  --color-primary-foreground: #450a0a;
+}
+
+/* Rose */
+[data-theme-color="rose"] {
+  --color-primary: #e11d48;
+  --color-primary-foreground: #fff1f2;
+}
+.dark[data-theme-color="rose"],
+.dark [data-theme-color="rose"] {
+  --color-primary: #f43f5e;
+  --color-primary-foreground: #4c0519;
+}
+
+/* Violet */
+[data-theme-color="violet"] {
+  --color-primary: #7c3aed;
+  --color-primary-foreground: #f5f3ff;
+}
+.dark[data-theme-color="violet"],
+.dark [data-theme-color="violet"] {
+  --color-primary: #8b5cf6;
+  --color-primary-foreground: #2e1065;
+}
+
+/* Yellow */
+[data-theme-color="yellow"] {
+  --color-primary: #ca8a04;
+  --color-primary-foreground: #fefce8;
+}
+.dark[data-theme-color="yellow"],
+.dark [data-theme-color="yellow"] {
+  --color-primary: #eab308;
+  --color-primary-foreground: #422006;
+}
+
+/* ---- Base ---- */
+body {
+  background-color: var(--color-background);
+  color: var(--color-foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-muted-foreground);
+}
+
+/* ---- Smooth transitions for interactive elements ---- */
+a, button, input, select, textarea,
+[role="button"] {
+  transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, opacity 150ms ease;
+}
+
+/* ---- Prose (Markdown Content) ---- */
+.prose {
+  color: var(--color-foreground);
+  line-height: 1.75;
+  max-width: none;
+}
+
+.prose h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  margin-bottom: 0.5rem;
+  line-height: 1.2;
+}
+
+.prose h2 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--color-border);
+  scroll-margin-top: 5rem;
+}
+
+.prose h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  scroll-margin-top: 5rem;
+}
+
+.prose p {
+  font-size: 0.9375rem;
+  color: var(--color-muted-foreground);
+  line-height: 1.75;
+  margin-bottom: 1rem;
+}
+
+.prose ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-muted-foreground);
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.prose ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  font-size: 0.875rem;
+  color: var(--color-muted-foreground);
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.prose li p {
+  margin-bottom: 0;
+}
+
+.prose a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.prose a:hover {
+  text-decoration: underline;
+}
+
+.prose code:not(pre code) {
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  background-color: var(--color-muted);
+  padding: 0.125rem 0.375rem;
+  border-radius: 0.25rem;
+  border: 1px solid var(--color-border);
+  font-weight: 500;
+}
+
+.prose strong {
+  font-weight: 600;
+  color: var(--color-foreground);
+}
+
+.prose hr {
+  border-color: var(--color-border);
+  margin: 2rem 0;
+}
+
+
+
+.prose blockquote {
+  border-left: 3px solid var(--color-primary);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  background-color: var(--color-muted);
+  border-radius: 0 0.375rem 0.375rem 0;
+  font-size: 0.875rem;
+}
+
+.prose blockquote p {
+  margin: 0;
+}

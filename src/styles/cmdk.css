@@ -1,0 +1,85 @@
+/* ========================================
+   CMDK Styles for Lunaby Docs Search
+   ======================================== */
+
+   .cmdk-theme {
+    max-width: 600px;
+    width: 100%;
+    background: var(--color-background);
+    border-radius: 0.5rem;
+    overflow: hidden;
+    font-family: var(--font-sans);
+  }
+  
+  .cmdk-theme [cmdk-input] {
+    font-family: var(--font-sans);
+    border: none;
+    width: 100%;
+    font-size: 0.9375rem;
+    padding: 1rem 1.25rem;
+    outline: none;
+    background: transparent;
+    color: var(--color-foreground);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .cmdk-theme [cmdk-input]::placeholder {
+    color: var(--color-muted-foreground);
+  }
+  
+  .cmdk-theme [cmdk-list] {
+    height: min(300px, calc(var(--cmdk-list-height)));
+    max-height: 400px;
+    overflow: auto;
+    overscroll-behavior: contain;
+    transition: 100ms ease;
+    transition-property: height;
+    padding: 0.5rem;
+  }
+  
+  .cmdk-theme [cmdk-item] {
+    content-visibility: auto;
+    cursor: pointer;
+    height: 44px;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 0.75rem;
+    color: var(--color-foreground);
+    user-select: none;
+    will-change: background, color;
+    transition: all 150ms ease;
+    margin-bottom: 2px;
+  }
+  
+  .cmdk-theme [cmdk-item][aria-selected="true"] {
+    background: var(--color-muted);
+    color: var(--color-primary);
+  }
+  
+  .cmdk-theme [cmdk-item][aria-selected="true"] span {
+    color: var(--color-muted-foreground);
+  }
+  
+  .cmdk-theme [cmdk-group-heading] {
+    user-select: none;
+    font-size: 0.75rem;
+    color: var(--color-muted-foreground);
+    padding: 0 0.5rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+    margin-top: 0.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .cmdk-theme [cmdk-empty] {
+    font-size: 0.875rem;
+    padding: 2rem 0;
+    text-align: center;
+    color: var(--color-muted-foreground);
+  }
