@@ -21,10 +21,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  experimental: {
-    // @ts-expect-error - Next.js undocumented config to allow local network dev access
-    allowedDevOrigins: ["localhost", "127.0.0.1", "192.168.1.90"],
-  },
 };
 
 export default nextConfig;

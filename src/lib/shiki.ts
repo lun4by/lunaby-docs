@@ -1,6 +1,6 @@
 import { createHighlighter, type Highlighter } from "shiki";
 
-let highlighter: Highlighter | null = null;
+let highlighterPromise: Promise<Highlighter> | null = null;
 
 const SUPPORTED_LANGUAGES = [
   "typescript",
@@ -13,14 +13,14 @@ const SUPPORTED_LANGUAGES = [
   "shell",
 ] as const;
 
-export async function getHighlighter(): Promise<Highlighter> {
-  if (!highlighter) {
-    highlighter = await createHighlighter({
+export function getHighlighter(): Promise<Highlighter> {
+  if (!highlighterPromise) {
+    highlighterPromise = createHighlighter({
       themes: ["github-dark", "github-light"],
       langs: [...SUPPORTED_LANGUAGES],
     });
   }
-  return highlighter;
+  return highlighterPromise as Promise<Highlighter>;
 }
 
 export async function highlightCode(
