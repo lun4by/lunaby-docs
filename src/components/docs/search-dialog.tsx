@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { SearchIcon } from "lucide-react";
-import { Kbd, Modal, ModalContent } from "@heroui/react";
+import { Kbd, ModalBackdrop, ModalContainer, ModalDialog, ModalBody } from "@heroui/react";
 import { Command } from "cmdk";
 import "@/styles/cmdk.css";
 
@@ -27,7 +27,7 @@ export function SearchDialog() {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
         e.preventDefault();
-        setOpen((open) => !open);
+        setOpen((prev) => !prev);
       }
     };
     document.addEventListener("keydown", down);
@@ -53,42 +53,48 @@ export function SearchDialog() {
             <span className="sm:hidden">Search...</span>
           </span>
         </span>
-        <Kbd className="hidden shrink-0 lg:inline-block" keys={["command"]}>K</Kbd>
+        <Kbd className="hidden shrink-0 lg:inline-block">
+          <Kbd.Abbr keyValue="command" />
+          <Kbd.Content>K</Kbd.Content>
+        </Kbd>
       </button>
 
-      <Modal 
-        isOpen={open} 
-        onOpenChange={setOpen} 
-        hideCloseButton 
-        classNames={{
-          base: "bg-card border border-border shadow-md max-w-[600px] overflow-hidden !m-4 sm:!mx-auto sm:!mt-[10vh] h-max max-h-[80vh]",
-          backdrop: "bg-background/80 backdrop-blur-sm",
-        }}
-        size="2xl"
-        placement="top-center"
+      <ModalBackdrop
+        isOpen={open}
+        onOpenChange={setOpen}
+        isDismissable
+        className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
       >
-        <ModalContent>
-          <Command className="cmdk-theme" label="Search documentation">
-            <Command.Input placeholder="Type a command or search..." autoFocus />
-            <Command.List>
-              <Command.Empty>No results found.</Command.Empty>
+        <ModalContainer
+          size="lg"
+          placement="top"
+          className="bg-card border border-border shadow-md max-w-[600px] overflow-hidden !m-4 sm:!mx-auto sm:!mt-[10vh] h-max max-h-[80vh]"
+        >
+          <ModalDialog aria-label="Search documentation">
+            <ModalBody>
+              <Command className="cmdk-theme" label="Search documentation">
+                <Command.Input placeholder="Type a command or search..." autoFocus />
+                <Command.List>
+                  <Command.Empty>No results found.</Command.Empty>
 
-              <Command.Group heading="Documentation">
-                {searchNodes.map((node) => (
-                  <Command.Item
-                    key={node.id}
-                    value={node.title + " " + node.section}
-                    onSelect={() => handleSelect(node.href)}
-                  >
-                    {node.title}
-                    <span className="ml-auto text-xs text-muted-foreground">{node.section}</span>
-                  </Command.Item>
-                ))}
-              </Command.Group>
-            </Command.List>
-          </Command>
-        </ModalContent>
-      </Modal>
+                  <Command.Group heading="Documentation">
+                    {searchNodes.map((node) => (
+                      <Command.Item
+                        key={node.id}
+                        value={node.title + " " + node.section}
+                        onSelect={() => handleSelect(node.href)}
+                      >
+                        {node.title}
+                        <span className="ml-auto text-xs text-muted-foreground">{node.section}</span>
+                      </Command.Item>
+                    ))}
+                  </Command.Group>
+                </Command.List>
+              </Command>
+            </ModalBody>
+          </ModalDialog>
+        </ModalContainer>
+      </ModalBackdrop>
     </>
   );
 }

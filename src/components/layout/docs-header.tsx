@@ -30,7 +30,7 @@ export function DocsHeader({ apiVersion = "1.0" }: DocsHeaderProps) {
             <Button
               isIconOnly
               size="sm"
-              variant="light"
+              variant="ghost"
               className="lg:hidden"
               aria-label="Toggle menu"
               onPress={() => setIsMobileOpen(!isMobileOpen)}
@@ -82,18 +82,15 @@ export function DocsHeader({ apiVersion = "1.0" }: DocsHeaderProps) {
             <span className="hidden rounded-full border border-border px-2 py-0.5 text-xs font-medium text-muted-foreground xl:block">
               v{apiVersion}
             </span>
-            <Button
-              as={Link}
-              href={SITE_CONFIG.apiUrl}
-              target="_blank"
-              size="sm"
-              color="primary"
-              variant="flat"
-              className="hidden text-xs font-medium lg:flex"
-              endContent={<ArrowUpRightIcon className="size-3" />}
-            >
-              Dashboard
-            </Button>
+            <Link href={SITE_CONFIG.apiUrl} target="_blank" className="hidden lg:flex">
+              <Button
+                size="sm"
+                variant="secondary"
+                className="inline-flex items-center gap-1 text-xs font-medium"
+              >
+                Dashboard <ArrowUpRightIcon className="size-3" />
+              </Button>
+            </Link>
             <ThemeToggle />
           </div>
         </div>

@@ -42,11 +42,11 @@ export function ThemeToggle({ className }: { className?: string }) {
 
   if (!mounted) {
     return (
-      <div className={cn("flex items-center gap-1", className)}>
-        <Button size="sm" isIconOnly variant="light" aria-label="Choose theme color" className="text-muted-foreground">
+      <div className={cn("flex items-center gap-2", className)}>
+        <Button size="sm" isIconOnly variant="ghost" aria-label="Choose theme color" className="text-muted-foreground">
           <PaletteIcon className="size-4" />
         </Button>
-        <Button size="sm" isIconOnly variant="light" aria-label="Toggle theme" className="text-muted-foreground">
+        <Button size="sm" isIconOnly variant="ghost" aria-label="Toggle theme" className="text-muted-foreground">
           <SunIcon className="size-4" />
         </Button>
       </div>
@@ -56,21 +56,21 @@ export function ThemeToggle({ className }: { className?: string }) {
   const isDark = resolvedTheme === "dark";
 
   return (
-    <div className={cn("flex items-center gap-1", className)}>
+    <div className={cn("flex items-center gap-2", className)}>
       {/* Theme Color Picker */}
-      <Popover placement="bottom-end">
+      <Popover>
         <PopoverTrigger>
           <Button
             size="sm"
             isIconOnly
-            variant="light"
+            variant="ghost"
             aria-label="Choose theme color"
             className="text-muted-foreground hover:bg-muted hover:text-foreground"
           >
             <PaletteIcon className="size-4" />
           </Button>
         </PopoverTrigger>
-        <PopoverContent className="w-auto p-3">
+        <PopoverContent className="w-auto p-3" placement="bottom end">
           <div className="space-y-2">
             <p className="text-xs font-medium text-muted-foreground">Theme Color</p>
             <div className="grid grid-cols-5 gap-1.5">
@@ -100,7 +100,7 @@ export function ThemeToggle({ className }: { className?: string }) {
       <Button
         size="sm"
         isIconOnly
-        variant="light"
+        variant="ghost"
         aria-label="Toggle dark mode"
         className="text-muted-foreground hover:bg-muted hover:text-foreground"
         onPress={() => setTheme(isDark ? "light" : "dark")}
