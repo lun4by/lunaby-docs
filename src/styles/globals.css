@@ -1,7 +1,4 @@
 @import "tailwindcss";
-@plugin "@heroui/theme";
-
-@source "../../node_modules/@heroui/theme/dist/**/*.{js,ts,jsx,tsx}";
 /* ========================================
    Lunaby Docs - Design System
    Multi-theme color support
@@ -50,6 +47,7 @@
   --color-primary: #2563eb;
   --color-primary-foreground: #eff6ff;
 }
+
 .dark[data-theme-color="blue"],
 .dark [data-theme-color="blue"] {
   --color-primary: #3b82f6;
@@ -61,6 +59,7 @@
   --color-primary: #0891b2;
   --color-primary-foreground: #ecfeff;
 }
+
 .dark[data-theme-color="cyan"],
 .dark [data-theme-color="cyan"] {
   --color-primary: #22d3ee;
@@ -72,6 +71,7 @@
   --color-primary: #16a34a;
   --color-primary-foreground: #f0fdf4;
 }
+
 .dark[data-theme-color="green"],
 .dark [data-theme-color="green"] {
   --color-primary: #22c55e;
@@ -83,6 +83,7 @@
   --color-primary: #ea580c;
   --color-primary-foreground: #fff7ed;
 }
+
 .dark[data-theme-color="orange"],
 .dark [data-theme-color="orange"] {
   --color-primary: #f97316;
@@ -94,6 +95,7 @@
   --color-primary: #dc2626;
   --color-primary-foreground: #fef2f2;
 }
+
 .dark[data-theme-color="red"],
 .dark [data-theme-color="red"] {
   --color-primary: #ef4444;
@@ -105,6 +107,7 @@
   --color-primary: #e11d48;
   --color-primary-foreground: #fff1f2;
 }
+
 .dark[data-theme-color="rose"],
 .dark [data-theme-color="rose"] {
   --color-primary: #f43f5e;
@@ -116,6 +119,7 @@
   --color-primary: #7c3aed;
   --color-primary-foreground: #f5f3ff;
 }
+
 .dark[data-theme-color="violet"],
 .dark [data-theme-color="violet"] {
   --color-primary: #8b5cf6;
@@ -127,6 +131,7 @@
   --color-primary: #ca8a04;
   --color-primary-foreground: #fefce8;
 }
+
 .dark[data-theme-color="yellow"],
 .dark [data-theme-color="yellow"] {
   --color-primary: #eab308;
@@ -162,7 +167,11 @@ body {
 }
 
 /* ---- Smooth transitions for interactive elements ---- */
-a, button, input, select, textarea,
+a,
+button,
+input,
+select,
+textarea,
 [role="button"] {
   transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease, opacity 150ms ease;
 }

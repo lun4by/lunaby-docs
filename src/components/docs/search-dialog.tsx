@@ -1,9 +1,9 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { SearchIcon } from "lucide-react";
-import { Kbd, ModalBackdrop, ModalContainer, ModalDialog, ModalBody } from "@heroui/react";
+import { Kbd } from "@heroui/react";
 import { Command } from "cmdk";
 import "@/styles/cmdk.css";
 
@@ -22,6 +22,7 @@ const searchNodes = [
 export function SearchDialog() {
   const [open, setOpen] = useState(false);
   const router = useRouter();
+  const dialogRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -29,15 +30,21 @@ export function SearchDialog() {
         e.preventDefault();
         setOpen((prev) => !prev);
       }
+      if (e.key === "Escape") {
+        setOpen(false);
+      }
     };
     document.addEventListener("keydown", down);
     return () => document.removeEventListener("keydown", down);
   }, []);
 
-  const handleSelect = (href: string) => {
-    setOpen(false);
-    router.push(href);
-  };
+  const handleSelect = useCallback(
+    (href: string) => {
+      setOpen(false);
+      router.push(href);
+    },
+    [router],
+  );
 
   return (
     <>
@@ -59,19 +66,24 @@ export function SearchDialog() {
         </Kbd>
       </button>
 
-      <ModalBackdrop
-        isOpen={open}
-        onOpenChange={setOpen}
-        isDismissable
-        className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
-      >
-        <ModalContainer
-          size="lg"
-          placement="top"
-          className="bg-card border border-border shadow-md max-w-[600px] overflow-hidden !m-4 sm:!mx-auto sm:!mt-[10vh] h-max max-h-[80vh]"
-        >
-          <ModalDialog aria-label="Search documentation">
-            <ModalBody>
+      {open && (
+        <>
+          {/* Backdrop */}
+          <div
+            className="fixed inset-0 z-50 bg-background/80 backdrop-blur-sm"
+            onClick={() => setOpen(false)}
+            aria-hidden="true"
+          />
+
+          {/* Modal */}
+          <div className="fixed inset-0 z-50 flex items-start justify-center pt-[10vh] px-4">
+            <div
+              ref={dialogRef}
+              role="dialog"
+              aria-label="Search documentation"
+              aria-modal="true"
+              className="w-full max-w-[600px] overflow-hidden rounded-lg border border-border bg-card shadow-lg"
+            >
               <Command className="cmdk-theme" label="Search documentation">
                 <Command.Input placeholder="Type a command or search..." autoFocus />
                 <Command.List>
@@ -91,10 +103,10 @@ export function SearchDialog() {
                   </Command.Group>
                 </Command.List>
               </Command>
-            </ModalBody>
-          </ModalDialog>
-        </ModalContainer>
-      </ModalBackdrop>
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 }
